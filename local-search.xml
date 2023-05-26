@@ -29,5 +29,30 @@
   
   
   
+  <entry>
+    <title>二分</title>
+    <link href="/2022/05/26/%E4%BA%8C%E5%88%86/"/>
+    <url>/2022/05/26/%E4%BA%8C%E5%88%86/</url>
+    
+    <content type="html"><![CDATA[<h1 id="整数二分"><a href="#整数二分" class="headerlink" title="整数二分"></a>整数二分</h1><ol><li><p>二分的本质并不是单调性，有单调可以用二分，用二分不一定得是单调；</p></li><li><p>二分的本质是条件和边界；</p></li><li><p>关于要不要加1，就看是l&#x3D;mid还是r&#x3D;mid；</p></li></ol><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">check</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>&#123;<span class="hljs-comment">/* ... */</span>&#125; <span class="hljs-comment">// 检查x是否满足某种性质  </span><br>​  <br><span class="hljs-comment">// 区间[l, r]被划分成[l, mid]和[mid + 1, r]时使用：  </span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">bsearch_1</span><span class="hljs-params">(<span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r)</span>  </span><br><span class="hljs-function"></span>&#123;  <br>    <span class="hljs-keyword">while</span> (l &lt; r)  <br>    &#123;  <br>        <span class="hljs-type">int</span> mid = l + r &gt;&gt; <span class="hljs-number">1</span>;  <br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">check</span>(mid)) r = mid;    <span class="hljs-comment">// check()判断mid是否满足性质  </span><br>        <span class="hljs-keyword">else</span> l = mid + <span class="hljs-number">1</span>;  <br>    &#125;  <br>    <span class="hljs-keyword">return</span> l;  <br>&#125;  <br><span class="hljs-comment">// 区间[l, r]被划分成[l, mid - 1]和[mid, r]时使用：  </span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">bsearch_2</span><span class="hljs-params">(<span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r)</span>  </span><br><span class="hljs-function"></span>&#123;  <br>    <span class="hljs-keyword">while</span> (l &lt; r)  <br>    &#123;  <br>        <span class="hljs-type">int</span> mid = l + r + <span class="hljs-number">1</span> &gt;&gt; <span class="hljs-number">1</span>;  <br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">check</span>(mid)) l = mid;  <br>        <span class="hljs-keyword">else</span> r = mid - <span class="hljs-number">1</span>;  <br>    &#125;  <br>    <span class="hljs-keyword">return</span> l;  <br>&#125;<br><br></code></pre></td></tr></table></figure><h1 id="浮点数二分"><a href="#浮点数二分" class="headerlink" title="浮点数二分"></a>浮点数二分</h1><p><strong>注意</strong></p><ol><li><p>eps的值要比题目中的小数位多2位</p></li><li><p>要注意边界和范围，比如0.01的三次方根</p></li></ol><p>可以让l&#x3D;-10000和r&#x3D;10000</p><p>或者分正负两种情况，让一个的边界去max（1.0，n）或者max（-1.0，n）</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">check</span><span class="hljs-params">(<span class="hljs-type">double</span> x)</span> </span>&#123;<span class="hljs-comment">/* ... */</span>&#125; <span class="hljs-comment">// 检查x是否满足某种性质  </span><br>​  <br><span class="hljs-function"><span class="hljs-type">double</span> <span class="hljs-title">bsearch_3</span><span class="hljs-params">(<span class="hljs-type">double</span> l, <span class="hljs-type">double</span> r)</span>  </span><br><span class="hljs-function"></span>&#123;  <br>    <span class="hljs-type">const</span> <span class="hljs-type">double</span> eps = <span class="hljs-number">1e-6</span>;   <span class="hljs-comment">// eps 表示精度，取决于题目对精度的要求  </span><br>    <span class="hljs-keyword">while</span> (r - l &gt; eps)  <br>    &#123;  <br>        <span class="hljs-type">double</span> mid = (l + r) / <span class="hljs-number">2</span>;  <br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">check</span>(mid)) r = mid;  <br>        <span class="hljs-keyword">else</span> l = mid;  <br>    &#125;  <br>    <span class="hljs-keyword">return</span> l;  <br>&#125;<br><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Algorithm</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Algorithm</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
   
 </search>
