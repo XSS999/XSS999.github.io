@@ -224,6 +224,67 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2023/02/27/Redis%E5%AE%9E%E7%8E%B0%E9%AB%98%E5%8F%AF%E7%94%A8%E7%82%B9%E8%B5%9E/" target="_self">
+          Redis实现高可用点赞功能
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/02/27/Redis%E5%AE%9E%E7%8E%B0%E9%AB%98%E5%8F%AF%E7%94%A8%E7%82%B9%E8%B5%9E/" target="_self">
+        <div>
+          点赞更新：本文只适合用于学习，实际场景中会出现很多问题。 血的教训：  hash 数据结构，行过万会导致定位filed数度慢。大量的hash结构不应该使用单个key或者redis 的hash结构。  点赞操作同步到数据库，这一步现在只能做到全量同步而且每次都是全量同步，完完全全的浪费。应该使用zet数据结构，source内部存储时间戳根据时间戳增量同步或者用户多日无活动进行全量同步。否则实际场景瞬
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-02-27 18:47" pubdate>
+              2023-02-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Redis/" class="category-chain-item">Redis</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Redis/">#Redis</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2023/02/22/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" target="_self">
           Linux常用命令
         </a>
@@ -730,67 +791,6 @@
             <i class="iconfont icon-date"></i>
             <time datetime="2022-02-22 18:47" pubdate>
               2022-02-22
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/DataStructure/" class="category-chain-item">DataStructure</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/DataStructure/">#DataStructure</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/02/21/KMP/" target="_self">
-          KMP
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/02/21/KMP/" target="_self">
-        <div>
-          知乎的讲解 KMP模板123456789101112131415161718192021// s[]是长文本，p[]是模式串，n是s的长度，m是p的长度求模式串的Next数组：for (int i = 2, j = 0; i &lt;= m; i ++ )    //这里的i，j不是双指针，j是最大长度&#123;    while (j &amp;&amp; p[i] != p[j + 1])
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-02-21 18:47" pubdate>
-              2022-02-21
             </time>
           </div>
         
